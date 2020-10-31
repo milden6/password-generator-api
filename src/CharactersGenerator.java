@@ -19,7 +19,7 @@ public class CharactersGenerator {
 
         while (password.length() < length){
 
-            switch (random.nextInt(4)){
+            switch (random.nextInt(3)){
                 case 1:
                     if (isUpperCase) {
                         randomIndex = random.nextInt(upperCase.length());
@@ -38,7 +38,7 @@ public class CharactersGenerator {
                         password.append(symbols.toCharArray()[randomIndex]);
                         break;
                     }
-                case 4:
+                default:
                     randomIndex = random.nextInt(lowerCase.length());
                     password.append(lowerCase.toCharArray()[randomIndex]);
                     break;
