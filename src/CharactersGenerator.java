@@ -11,27 +11,37 @@ public class CharactersGenerator {
 
         StringBuilder password = new StringBuilder(length);
         SecureRandom random = new SecureRandom();
+        int randomIndex = 0;
 
         if (length < 4){
             length = 4; //min allowed length
         }
 
-        for (int i = 1; i < length; i++) {
+        while (password.length() < length){
 
-            int randomIndex = random.nextInt(lowerCase.length());
-            password.append(lowerCase.toCharArray()[randomIndex]);
-
-            if (isUpperCase) {
-                randomIndex = random.nextInt(upperCase.length());
-                password.append(upperCase.toCharArray()[randomIndex]);
-            }
-            if (isDigits) {
-                randomIndex = random.nextInt(digits.length());
-                password.append(digits.toCharArray()[randomIndex]);
-            }
-            if (isSymbols) {
-                randomIndex = random.nextInt(symbols.length());
-                password.append(symbols.toCharArray()[randomIndex]);
+            switch (random.nextInt(4)){
+                case 1:
+                    if (isUpperCase) {
+                        randomIndex = random.nextInt(upperCase.length());
+                        password.append(upperCase.toCharArray()[randomIndex]);
+                        break;
+                    }
+                case 2:
+                    if (isDigits) {
+                        randomIndex = random.nextInt(digits.length());
+                        password.append(digits.toCharArray()[randomIndex]);
+                        break;
+                    }
+                case 3:
+                    if (isSymbols) {
+                        randomIndex = random.nextInt(symbols.length());
+                        password.append(symbols.toCharArray()[randomIndex]);
+                        break;
+                    }
+                case 4:
+                    randomIndex = random.nextInt(lowerCase.length());
+                    password.append(lowerCase.toCharArray()[randomIndex]);
+                    break;
             }
 
         }
