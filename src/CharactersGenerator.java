@@ -2,19 +2,20 @@ import java.security.SecureRandom;
 
 public class CharactersGenerator {
 
-    private final String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private final String lowerCase = "abcdefghijklmnopqrstuvwxyz";
-    private final String digits = "1234567890";
-    private final String symbols = "!\"#$%&\\'()*+,-./:;<=>?@^[\\\\]^_`{|}~";
+    private static final String UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String LOWER_CASE = "abcdefghijklmnopqrstuvwxyz";
+    private static final String DIGITS = "1234567890";
+    private static final String SYMBOLS = "!\"#$%&\\'()*+,-./:;<=>?@^[\\\\]^_`{|}~";
+    private static final int MIN_PASS_LENGTH = 8;
 
-    public String GeneratePassword(int length, boolean isUpperCase, boolean isDigits, boolean isSymbols){
+    public String generatePassword(int length, boolean isUpperCase, boolean isDigits, boolean isSymbols){
 
         StringBuilder password = new StringBuilder(length);
         SecureRandom random = new SecureRandom();
         int randomIndex = 0;
 
-        if (length < 4){
-            length = 4; //min allowed length
+        if (length < MIN_PASS_LENGTH){
+            length = MIN_PASS_LENGTH; //min allowed length
         }
 
         while (password.length() < length){
@@ -22,25 +23,25 @@ public class CharactersGenerator {
             switch (random.nextInt(3)){
                 case 1:
                     if (isUpperCase) {
-                        randomIndex = random.nextInt(upperCase.length());
-                        password.append(upperCase.toCharArray()[randomIndex]);
+                        randomIndex = random.nextInt(UPPER_CASE.length());
+                        password.append(UPPER_CASE.toCharArray()[randomIndex]);
                         break;
                     }
                 case 2:
                     if (isDigits) {
-                        randomIndex = random.nextInt(digits.length());
-                        password.append(digits.toCharArray()[randomIndex]);
+                        randomIndex = random.nextInt(DIGITS.length());
+                        password.append(DIGITS.toCharArray()[randomIndex]);
                         break;
                     }
                 case 3:
                     if (isSymbols) {
-                        randomIndex = random.nextInt(symbols.length());
-                        password.append(symbols.toCharArray()[randomIndex]);
+                        randomIndex = random.nextInt(SYMBOLS.length());
+                        password.append(SYMBOLS.toCharArray()[randomIndex]);
                         break;
                     }
                 default:
-                    randomIndex = random.nextInt(lowerCase.length());
-                    password.append(lowerCase.toCharArray()[randomIndex]);
+                    randomIndex = random.nextInt(LOWER_CASE.length());
+                    password.append(LOWER_CASE.toCharArray()[randomIndex]);
                     break;
             }
 
