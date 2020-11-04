@@ -12,15 +12,15 @@ public class CharactersGenerator {
 
         StringBuilder password = new StringBuilder(length);
         SecureRandom random = new SecureRandom();
-        int randomIndex = 0;
+        int randomIndex;
 
         if (length < MIN_PASS_LENGTH){
-            length = MIN_PASS_LENGTH; //min allowed length
+            length = MIN_PASS_LENGTH;
         }
 
         while (password.length() < length){
 
-            switch (random.nextInt(3)){
+            switch (random.nextInt(4)){
                 case 1:
                     if (isUpperCase) {
                         randomIndex = random.nextInt(UPPER_CASE.length());

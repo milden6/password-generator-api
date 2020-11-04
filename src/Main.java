@@ -3,6 +3,11 @@ public class Main {
     public static void main(String[] args) {
 
         CharactersGenerator generator = new CharactersGenerator();
-        System.out.println(generator.generatePassword(4, true, false, false));
+        StrengthAnalyzer strengthAnalyzer = new StrengthAnalyzer();
+
+        String password = generator.generatePassword(10, true, true, true);
+
+        System.out.println(password);
+        System.out.println(strengthAnalyzer.analyzeStrength(password));
     }
 }
