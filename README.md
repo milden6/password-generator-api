@@ -2,6 +2,6 @@
 
 ### Tips:
 - [X] Characters based password
-- [ ] Strength analyzer of password 
+- [X] Strength analyzer of password 
 - [ ] Pronounceable password
 - [ ] User interface
